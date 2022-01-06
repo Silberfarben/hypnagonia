@@ -237,8 +237,10 @@ const ACTIVE_EFFECTS := {
 		"generic_description": "{effect_name}: Automatically adds unpreventable interpretation each turn.",
 		"rich_text_icon": "res://fonts/rich_text_icons/coma.png",
 		"description": "{effect_name} ({effect_icon}): At the start of this {entity}'s turn it receives"\
-				+ " {amount} {health} (1 per stack), then reduce these stacks by 1."\
-				+ "\n({effect_icon} bypasses {defence})"
+				+ " {amount} {health} (1 per stack), then reduce these stacks by 1. "\
+				+ "({effect_icon} bypasses {defence})",
+		"extra_dreamer_description": "\nOn the dreamer, {effect_icon} leaves them at 1 {anxiety} "\
+				+ "but starts burning released pathos"
 	},
 	"burn": {
 		"name": "Envy",
@@ -328,6 +330,7 @@ const ACTIVE_EFFECTS := {
 		"type": "Special",
 		"description": "{effect_name}: This {entity} has been rebalanced.",
 		"noscript": true,
+		"is_invisible": true,
 		"icon": preload("res://assets/icons/triple-yin.png"),
 	},
 	"enraged": {

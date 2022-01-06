@@ -29,6 +29,7 @@ var printed_properties := {}
 func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	connect("card_played", cfc.signal_propagator, "_on_signal_received")
+# warning-ignore:return_value_discarded
 	connect("state_changed", self, "_on_state_changed")
 
 
@@ -127,14 +128,22 @@ func retrieve_scripts(trigger: String) -> Dictionary:
 			else:
 				found_scripts["hand"] += generate_discard_tasks()
 			found_scripts["hand"] += generate_play_confirm_scripts()
+		# This injects into multiple-option dictionaries
 		else:
 			for key in found_scripts["hand"]:
 				if get_property("Type") == "Concentration" or get_property("_is_concentration"):
 					found_scripts["hand"][key] += generate_remove_from_deck_tasks()
-				else:
+				elif not has_move_script(found_scripts["hand"][key]):
 					found_scripts["hand"][key] += generate_discard_tasks()
 				found_scripts["hand"][key] += generate_play_confirm_scripts()
 	return(found_scripts)
+
+
+func has_move_script(script: Array) -> bool:
+	for script_task in script:
+		if script_task.name == "move_card_to_container":
+			return(true)
+	return(false)
 
 
 # Sets a flag when an action card is dragged to the board manually
@@ -239,7 +248,7 @@ func generate_play_costs_tasks() -> Array:
 # Uses a template to create task definitions for discarding a card
 # then returns it to the calling function to execute or insert it into
 # the cards existing scripts for its state.
-func generate_discard_tasks(only_from_hand := true) -> Array:
+func generate_discard_tasks(specify_parent := "hand") -> Array:
 	if properties.get("_avoid_normal_discard"):
 		return([])
 	var discard_script_template := {
@@ -248,8 +257,8 @@ func generate_discard_tasks(only_from_hand := true) -> Array:
 			"tags": ["Played"],
 			"dest_container": cfc.NMAP.discard.name,
 		}
-	if only_from_hand:
-		discard_script_template["filter_state_subject"] = [{"filter_parent": "hand"}]
+	if specify_parent != '':
+		discard_script_template["filter_state_subject"] = [{"filter_parent": specify_parent}]
 	var discard_tasks = [discard_script_template]
 	return(discard_tasks)
 
@@ -471,11 +480,13 @@ func _start_dragging(drag_offset: Vector2) -> void:
 	._start_dragging(drag_offset)
 	if is_executing_scripts:
 		return
-	var sceng = .execute_scripts(self, "manual", {}, true)
+	var card_scripts = retrieve_scripts("manual")
+	if typeof(card_scripts[get_state_exec()]) != TYPE_DICTIONARY:
+		var _sceng = .execute_scripts(self, "manual", {}, true)
 
 
 func _on_state_changed(_card: Card, old_state: int, _new_state: int) -> void:
 	if old_state == CardState.DRAGGED:
 		for entity in cfc.get_tree().get_nodes_in_group("CombatEntities"):
 			entity.clear_predictions()
-	
+

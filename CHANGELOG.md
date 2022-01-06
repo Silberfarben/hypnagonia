@@ -1,12 +1,71 @@
 # Changelog
 
+## [v0.27.3](https://github.com/db0/hypnagonia/tree/v0.27.3) (2022-01-06)
+
+[Full Changelog](https://github.com/db0/hypnagonia/compare/v0.27.2...v0.27.3)
+
+**Merged pull requests:**
+
+- fix: Wrong case broke loading in 'nix [\#173](https://github.com/db0/hypnagonia/pull/173) ([db0](https://github.com/db0))
+
+## [v0.27.2](https://github.com/db0/hypnagonia/tree/v0.27.2) (2022-01-06)
+
+[Full Changelog](https://github.com/db0/hypnagonia/compare/v0.27.1...v0.27.2)
+
+**Merged pull requests:**
+
+- fix\(cards\): Excluded Dubious Painkillers from random Perturbations [\#172](https://github.com/db0/hypnagonia/pull/172) ([db0](https://github.com/db0))
+
+## [v0.27.1](https://github.com/db0/hypnagonia/tree/v0.27.1) (2022-01-06)
+
+[Full Changelog](https://github.com/db0/hypnagonia/compare/v0.27.0...v0.27.1)
+
+**Implemented enhancements:**
+
+- Idea for an anxiety manipulation ordeal. [\#164](https://github.com/db0/hypnagonia/issues/164)
+- Make NCEs which give artifacts, also show the artifact they give in their results [\#159](https://github.com/db0/hypnagonia/issues/159)
+
+**Merged pull requests:**
+
+- fix\(cards\): Wrong tag on Dubious Painkillers [\#171](https://github.com/db0/hypnagonia/pull/171) ([db0](https://github.com/db0))
+
+## [v0.27.0](https://github.com/db0/hypnagonia/tree/v0.27.0) (2022-01-06)
+
+[Full Changelog](https://github.com/db0/hypnagonia/compare/v0.26.2...v0.27.0)
+
+**Implemented enhancements:**
+
+- Should not be able to chain hyperfocus [\#167](https://github.com/db0/hypnagonia/issues/167)
+
+**Fixed bugs:**
+
+- Card Towering Presence not procing [\#169](https://github.com/db0/hypnagonia/issues/169)
+- Cards with Forget tag, played by Blind Trial card, are not Forgotten [\#165](https://github.com/db0/hypnagonia/issues/165)
+
+**Merged pull requests:**
+
+- Added Dentist [\#170](https://github.com/db0/hypnagonia/pull/170) ([db0](https://github.com/db0))
+- content \(nce\): Spider fluff switched to past tense [\#162](https://github.com/db0/hypnagonia/pull/162) ([Silberfarben](https://github.com/Silberfarben))
+
+## [v0.26.2](https://github.com/db0/hypnagonia/tree/v0.26.2) (2022-01-05)
+
+[Full Changelog](https://github.com/db0/hypnagonia/compare/v0.26.1...v0.26.2)
+
+**Fixed bugs:**
+
+- Dragging Action card to target with "Enough is Enough" is bugged [\#161](https://github.com/db0/hypnagonia/issues/161)
+- pathos chances in journal hover don't add up to 100% [\#157](https://github.com/db0/hypnagonia/issues/157)
+
+**Merged pull requests:**
+
+- Changed how Doubt works [\#163](https://github.com/db0/hypnagonia/pull/163) ([db0](https://github.com/db0))
+
 ## [v0.26.1](https://github.com/db0/hypnagonia/tree/v0.26.1) (2022-01-05)
 
 [Full Changelog](https://github.com/db0/hypnagonia/compare/v0.26.0...v0.26.1)
 
 **Implemented enhancements:**
 
-- Improve "Progress Card" UX [\#158](https://github.com/db0/hypnagonia/issues/158)
 - Right click on cards in card draft should show possible upgrades [\#55](https://github.com/db0/hypnagonia/issues/55)
 
 **Fixed bugs:**
